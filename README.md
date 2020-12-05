@@ -1,2 +1,5 @@
 # Honors-Thesis
-a dumping ground for all things related to my senior thesis
+
+Raw data was collected from the 2010 CCES and 2012 ANES, for more information on my project please email lrp6@rice.edu *This thesis is a work in progress*
+
+Abstract: Nearly three decades ago, scholars coined the hostile media phenomenon when reflecting on cold war politics and the advent of radio coverage of current events. Today, hostile media has evolved from the talk radio of the 1980s to Facebook and Twitter in the 2010s. The literature on hostile media effects and bias must also evolve with this shift. This work explores how personality traits can predict who consumes hostile media, and who acts upon this consumption. Using data made available from the Harvard Cooperative Congressional Elections Study (CCES) and the American National Election Study (ANES), personality will be assessed by the ten item personality inventory (TIPI) metric of the Big Five personality theory. Using a multivariate linear regression analysis, this project will see which personality metrics predict hostile media consumption. These results will certainly hold implications in the realm of media strategy and rhetoric in the American political landscape. 

@@ -2,32 +2,34 @@ library(haven)
 library(readr)
 library(dplyr)
 library(magrittr)
-data <- read_dta("Downloads/anes_timeseries_2012_dta/anes_timeseries_2012.dta")
-
-#registered party
-View(data$prevote_regpty)
-#removing any missing/i don't know/NA answers
-data[!is.na(data$prevote_regpty) & data$prevote_regpty <=0, ] %<>%
-  mutate(prevote_regpty = NA)
-#1=dem, 2=rep, 4=ind, 5=other
-hist(data$prevote_regpty)
+data <- read_dta("Downloads/anes_timeseries_2012_dta/anes_timeseries_2012.dta") 
 
 #building a 7 pt party scale
 View(data$pid_self)
 data[!is.na(data$pid_self) & data$pid_self <=0, ] %<>%
   mutate(pid_self = NA)
-hist(data$pid_self)
 
 View(data$pid_strong)
-#1=strong, 2=not strong
 data[!is.na(data$pid_strong) & data$pid_strong <=0, ] %<>%
   mutate(pid_strong = NA)
 
 View(data$pid_lean)
-#1=close to rep, 2=true ind, 3=close to dem
 data[!is.na(data$pid_lean) & data$pid_lean <=0, ] %<>%
   mutate(pid_lean = NA)
-hist(data$pid_lean)
+
+data$pid7 <- NA
+data$pid7[data$pid_self==1 & data$pid_strong==1] <- 0 #strong dem
+data$pid7[data$pid_self==1 & data$pid_strong==2] <- 1 #not strong dem
+data$pid7[data$pid_self==3 & data$pid_lean==3] <- 2 #ind lean dem
+data$pid7[data$pid_self==3 & data$pid_lean==3] <- 3 #true ind
+data$pid7[data$pid_self==3 & data$pid_lean==1] <- 4 #ind lean rep
+data$pid7[data$pid_self==2 & data$pid_strong==2] <- 5 #not strong rep
+data$pid7[data$pid_self==2 & data$pid_strong==1] <- 6 #strong rep
+View(data$pid7)
+
+#standardizing party id scale
+zpid7<- (scale(data$pid7, center = TRUE, scale = TRUE))
+hist(zpid7)
 
 #tv sources
 

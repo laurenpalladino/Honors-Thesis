@@ -31,166 +31,220 @@ View(data$pid7)
 zpid7<- (scale(data$pid7, center = TRUE, scale = TRUE))
 hist(zpid7)
 
-#tv sources
+#assigning bias scores to media sources (negative=left slant, positive=right slant)
+#removing shows that were: 
+    #attention checks (eg. NCIS, American Idol), 
+    #comedy/satire programs (eg. SNL, Colbert Report),
+    #spanish language programs (eg. Al Punto, CNN en espanol)
 
-#watches 20/20
-View(data$medsrc_tvprog_01)
-#watches 60 minutes
-View(data$medsrc_tvprog_02)
 #watches ABC news nightline
+data[!is.na(data$medsrc_tvprog_03) & data$medsrc_tvprog_03 <0, ] %<>%
+  mutate(medsrc_tvprog_03 = NA)
+data$medsrc_tvprog_03[data$medsrc_tvprog_03>0] <- -5.2
 View(data$medsrc_tvprog_03)
+
 #watches ABC world news tonight
+data[!is.na(data$medsrc_tvprog_04) & data$medsrc_tvprog_04 <0, ] %<>%
+  mutate(medsrc_tvprog_04 = NA)
+data$medsrc_tvprog_04[data$medsrc_tvprog_04>0] <- -5.2
 View(data$medsrc_tvprog_04)
-#watches America Live
-View(data$medsrc_tvprog_05)
-#watches America This Morning
-View(data$medsrc_tvprog_06)
+
 #watches America's Newsroom
+data[!is.na(data$medsrc_tvprog_07) & data$medsrc_tvprog_07 <0, ] %<>%
+  mutate(medsrc_tvprog_07 = NA)
+data$medsrc_tvprog_07[data$medsrc_tvprog_07>0] <- 24.56
 View(data$medsrc_tvprog_07)
-#watches American Idol
-View(data$medsrc_tvprog_08)
+
 #watches Anderson Cooper
+data[!is.na(data$medsrc_tvprog_09) & data$medsrc_tvprog_09 <0, ] %<>%
+  mutate(medsrc_tvprog_09 = NA)
+data$medsrc_tvprog_09[data$medsrc_tvprog_09>0] <- -11.87
 View(data$medsrc_tvprog_09)
-#watches the Big Bang Theory
-View(data$medsrc_tvprog_10)
+
 #watches CBS evening news
+data[!is.na(data$medsrc_tvprog_11) & data$medsrc_tvprog_11 <0, ] %<>%
+  mutate(medsrc_tvprog_11 = NA)
+data$medsrc_tvprog_11[data$medsrc_tvprog_11>0] <- -3.96
 View(data$medsrc_tvprog_11)
+
 #watches CBS this morning
+data[!is.na(data$medsrc_tvprog_12) & data$medsrc_tvprog_12 <0, ] %<>%
+  mutate(medsrc_tvprog_12 = NA)
+data$medsrc_tvprog_12[data$medsrc_tvprog_12>0] <- -3.96
 View(data$medsrc_tvprog_12)
+
 #watches Chris Matthews show
+data[!is.na(data$medsrc_tvprog_13) & data$medsrc_tvprog_13 <0, ] %<>%
+  mutate(medsrc_tvprog_13 = NA)
+data$medsrc_tvprog_13[data$medsrc_tvprog_13>0] <- -15.02
 View(data$medsrc_tvprog_13)
-#watches Colbert Report
-View(data$medsrc_tvprog_14)
-#watches daily show with Jon Stewart
-View(data$medsrc_tvprog_15)
-#watches dancing with the stars
-View(data$medsrc_tvprog_16)
+
 #watches dateline NBC
+data[!is.na(data$medsrc_tvprog_17) & data$medsrc_tvprog_17 <0, ] %<>%
+  mutate(medsrc_tvprog_17 = NA)
+data$medsrc_tvprog_17[data$medsrc_tvprog_17>0] <- -7.72
 View(data$medsrc_tvprog_17)
-#watches doctors
-View(data$medsrc_tvprog_18)
-#watches Ellen DeGeneres show
-View(data$medsrc_tvprog_19)
+
 #watches face the nation
+data[!is.na(data$medsrc_tvprog_20) & data$medsrc_tvprog_20 <0, ] %<>%
+  mutate(medsrc_tvprog_20 = NA)
+data$medsrc_tvprog_20[data$medsrc_tvprog_20>0] <- -3.96
 View(data$medsrc_tvprog_20)
-#watches the five
-View(data$medsrc_tvprog_21)
+
 #watches fox report
+data[!is.na(data$medsrc_tvprog_22) & data$medsrc_tvprog_22 <0, ] %<>%
+  mutate(medsrc_tvprog_22 = NA)
+data$medsrc_tvprog_22[data$medsrc_tvprog_22>0] <- 24.56
 View(data$medsrc_tvprog_22)
+
 #watches frontline
+data[!is.na(data$medsrc_tvprog_23) & data$medsrc_tvprog_23 <0, ] %<>%
+  mutate(medsrc_tvprog_23 = NA)
+data$medsrc_tvprog_23[data$medsrc_tvprog_23>0] <- -3.55
 View(data$medsrc_tvprog_23)
-#watches good morning america
-View(data$medsrc_tvprog_24)
+
 #watches hannity
+data[!is.na(data$medsrc_tvprog_25) & data$medsrc_tvprog_25 <0, ] %<>%
+  mutate(medsrc_tvprog_25 = NA)
+data$medsrc_tvprog_25[data$medsrc_tvprog_25>0] <- 24.56
 View(data$medsrc_tvprog_25)
-#watches Huckabee
-View(data$medsrc_tvprog_26)
+
 #watches insider
+data[!is.na(data$medsrc_tvprog_27) & data$medsrc_tvprog_27 <0, ] %<>%
+  mutate(medsrc_tvprog_27 = NA)
+data$medsrc_tvprog_27[data$medsrc_tvprog_27>0] <- -6.00
 View(data$medsrc_tvprog_27)
-#watches jimmy kimmel live
-View(data$medsrc_tvprog_28)
-#watches key and peele
-View(data$medsrc_tvprog_29)
+
 #watches the late late show with craig ferguson
+data[!is.na(data$medsrc_tvprog_30) & data$medsrc_tvprog_30 <0, ] %<>%
+  mutate(medsrc_tvprog_30 = NA)
+data$medsrc_tvprog_30[data$medsrc_tvprog_30>0] <- -3.96
 View(data$medsrc_tvprog_30)
-#watches the late show with david letterman
-View(data$medsrc_tvprog_31)
+
 #watches meet the press
+data[!is.na(data$medsrc_tvprog_32) & data$medsrc_tvprog_32 <0, ] %<>%
+  mutate(medsrc_tvprog_32 = NA)
+data$medsrc_tvprog_32[data$medsrc_tvprog_32>0] <- -7.72
 View(data$medsrc_tvprog_32)
-#watches the mentalist
-View(data$medsrc_tvprog_33)
+
 #watches NBC nightly news
+data[!is.na(data$medsrc_tvprog_34) & data$medsrc_tvprog_34 <0, ] %<>%
+  mutate(medsrc_tvprog_34 = NA)
+data$medsrc_tvprog_34[data$medsrc_tvprog_34>0] <- -7.72
 View(data$medsrc_tvprog_34)
-#watches NCIS
-View(data$medsrc_tvprog_35)
+
 #watches the O'Reilly Factor
+data[!is.na(data$medsrc_tvprog_36) & data$medsrc_tvprog_36 <0, ] %<>%
+  mutate(medsrc_tvprog_36 = NA)
+data$medsrc_tvprog_36[data$medsrc_tvprog_36>0] <- 26.25
 View(data$medsrc_tvprog_36)
+
 #watches on the record with Greta Van Susteren
+data[!is.na(data$medsrc_tvprog_37) & data$medsrc_tvprog_37 <0, ] %<>%
+  mutate(medsrc_tvprog_37 = NA)
+data$medsrc_tvprog_37[data$medsrc_tvprog_37>0] <- -15.12
 View(data$medsrc_tvprog_37)
-#watches person of interest
-View(data$medsrc_tvprog_38)
+
 #watches rock center with Brian Williams
+data[!is.na(data$medsrc_tvprog_39) & data$medsrc_tvprog_39 <0, ] %<>%
+  mutate(medsrc_tvprog_39 = NA)
+data$medsrc_tvprog_39[data$medsrc_tvprog_39>0] <- -15.12
 View(data$medsrc_tvprog_39)
-#watches Saturday Night Live
-View(data$medsrc_tvprog_40)
+
 #watches special report with Bret Baier
+data[!is.na(data$medsrc_tvprog_41) & data$medsrc_tvprog_41 <0, ] %<>%
+  mutate(medsrc_tvprog_41 = NA)
+data$medsrc_tvprog_41[data$medsrc_tvprog_41>0] <- 24.56
 View(data$medsrc_tvprog_41)
+
 #watches tavis smiley
+data[!is.na(data$medsrc_tvprog_42) & data$medsrc_tvprog_42 <0, ] %<>%
+  mutate(medsrc_tvprog_42 = NA)
+data$medsrc_tvprog_42[data$medsrc_tvprog_42>0] <- 3.55
 View(data$medsrc_tvprog_42)
+
 #watches sunday morning
+data[!is.na(data$medsrc_tvprog_43) & data$medsrc_tvprog_43 <0, ] %<>%
+  mutate(medsrc_tvprog_43 = NA)
+data$medsrc_tvprog_43[data$medsrc_tvprog_43>0] <- -3.96
 View(data$medsrc_tvprog_43)
+
 #watches the view
+data[!is.na(data$medsrc_tvprog_44) & data$medsrc_tvprog_44 <0, ] %<>%
+  mutate(medsrc_tvprog_44 = NA)
+data$medsrc_tvprog_44[data$medsrc_tvprog_44>0] <- -5.20
 View(data$medsrc_tvprog_44)
+
 #watches this week
+data[!is.na(data$medsrc_tvprog_45) & data$medsrc_tvprog_45 <0, ] %<>%
+  mutate(medsrc_tvprog_45 = NA)
+data$medsrc_tvprog_45[data$medsrc_tvprog_45>0] <- -5.20
 View(data$medsrc_tvprog_45)
+
 #watches the today show
+data[!is.na(data$medsrc_tvprog_46) & data$medsrc_tvprog_46 <0, ] %<>%
+  mutate(medsrc_tvprog_46 = NA)
+data$medsrc_tvprog_46[data$medsrc_tvprog_46>0] <- -7.72
 View(data$medsrc_tvprog_46)
-#watches the voice
-View(data$medsrc_tvprog_47)
-#watches the talk
-View(data$medsrc_tvprog_48)
-#watches al punto
-View(data$medsrc_tvprog_49)
-#watches al rojo vivo
-View(data$medsrc_tvprog_50)
-#watches aqui y ahora
-View(data$medsrc_tvprog_51)
-#watches cnn en espanol
-View(data$medsrc_tvprog_52)
-#watches despierta America
-View(data$medsrc_tvprog_53)
-#watches ElGordo y La Flaca
-View(data$medsrc_tvprog_54)
-#watches Enfoque
-View(data$medsrc_tvprog_55)
-#watches hoy
-View(data$medsrc_tvprog_56)
-#watches lo mejor de caso cerrado
-View(data$medsrc_tvprog_57)
-#watches noitceiro enrique gratas
-View(data$medsrc_tvprog_58)
-#watches noticiero telemundo
-View(data$medsrc_tvprog_59)
-#watches noticiero univision
-View(data$medsrc_tvprog_60)
-#watches Pa'lante con cristiana
-View(data$medsrc_tvprog_61)
-#watches pequenos gigantes
-View(data$medsrc_tvprog_62)
-#watches primer impacto
-View(data$medsrc_tvprog_63)
-#watches sabado gigante
-View(data$medsrc_tvprog_64)
 
 #radio sources
 
 #listens to all things considered (NPR)
+data[!is.na(data$medsrc_radio_01) & data$medsrc_radio_01 <0, ] %<>%
+  mutate(medsrc_radio_01 = NA)
+data$medsrc_radio_01[data$medsrc_radio_01>0] <- -14.16
 View(data$medsrc_radio_01)
-#listens to the dave ramsey show
-View(data$medsrc_radio_02)
+
 #listens to the ed schultz show
+data[!is.na(data$medsrc_radio_03) & data$medsrc_radio_03 <0, ] %<>%
+  mutate(medsrc_radio_03 = NA)
+data$medsrc_radio_03[data$medsrc_radio_03>0] <- -15.12
 View(data$medsrc_radio_03)
+
 #listens to fresh air (NPR)
+data[!is.na(data$medsrc_radio_04) & data$medsrc_radio_04 <0, ] %<>%
+  mutate(medsrc_radio_04 = NA)
+data$medsrc_radio_04[data$medsrc_radio_04>0] <- -14.16
 View(data$medsrc_radio_04)
+
 #listens toglenn beck program
+data[!is.na(data$medsrc_radio_05) & data$medsrc_radio_05 <0, ] %<>%
+  mutate(medsrc_radio_05 = NA)
+data$medsrc_radio_05[data$medsrc_radio_05>0] <- 17.05
 View(data$medsrc_radio_05)
+
 #listens to the laura ingraham show
+data[!is.na(data$medsrc_radio_06) & data$medsrc_radio_06 <0, ] %<>%
+  mutate(medsrc_radio_06 = NA)
+data$medsrc_radio_06[data$medsrc_radio_06>0] <- 24.56
 View(data$medsrc_radio_06)
+
 #listens to the mark levin show
+data[!is.na(data$medsrc_radio_07) & data$medsrc_radio_07 <0, ] %<>%
+  mutate(medsrc_radio_07 = NA)
+data$medsrc_radio_07[data$medsrc_radio_07>0] <- 24.56
 View(data$medsrc_radio_07)
+
 #listens to the morning edition (NPR)
+data[!is.na(data$medsrc_radio_08) & data$medsrc_radio_08 <0, ] %<>%
+  mutate(medsrc_radio_08 = NA)
+data$medsrc_radio_08[data$medsrc_radio_08>0] <- -14.16
 View(data$medsrc_radio_08)
-#listens to the neal boortz show
-View(data$medsrc_radio_09)
-#listens to the power (joe madison)
-View(data$medsrc_radio_10)
+
 #listens to the rish limbaugh show
+data[!is.na(data$medsrc_radio_11) & data$medsrc_radio_11 <0, ] %<>%
+  mutate(medsrc_radio_11 = NA)
+data$medsrc_radio_11[data$medsrc_radio_11>0] <- 27.84
 View(data$medsrc_radio_11)
-#listens to the savage nation (michael savage)
-View(data$medsrc_radio_12)
+
 #listens to the sean hannity show
+data[!is.na(data$medsrc_radio_13) & data$medsrc_radio_13 <0, ] %<>%
+  mutate(medsrc_radio_13 = NA)
+data$medsrc_radio_13[data$medsrc_radio_13>0] <- 24.56
 View(data$medsrc_radio_13)
+
 #listens to talk of the nation (NPR)
+data[!is.na(data$medsrc_radio_14) & data$medsrc_radio_14 <0, ] %<>%
+  mutate(medsrc_radio_14 = NA)
+data$medsrc_radio_14[data$medsrc_radio_14>0] <- -14.16
 View(data$medsrc_radio_14)
-#listens to the thom hartmann program
-View(data$medsrc_radio_15)

@@ -284,13 +284,14 @@ tipidata$neuroticism = data$tipi_anx + data$tipi_calm
 tipidata$openness = data$tipi_open + data$tipi_conv
 
 #create a 0-1 scale for each
-extraversion = (extraversion-1)/13
-agreeable = (agreeable-1)/13
-conscientiousness = (conscientiousness-1)/13
-neuroticism = (neuroticism-1)/13
-openness = (openness-1)/13
+extraversion = (tipidata$extraversion-1)/13
+agreeable = (tipidata$agreeable-1)/13
+conscientiousness = (tipidata$conscientiousness-1)/13
+neuroticism = (tipidata$neuroticism-1)/13
+openness = (tipidata$openness-1)/13
 
 #un-reverse coding to correct skew:
+hist(conscientiousness)
 data$tipi_dep<-recode(data$tipi_dep, '1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1')
 data$tipi_disorg <- recode(data$tipi_disorg, '1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1')
 conscientiousness = data$tipi_dep + data$tipi_disorg
@@ -299,16 +300,17 @@ conscientiousness = (conscientiousness-1)/13
 consc2 = log(conscientiousness)
 
 #neuroticism is right skewed (more likely to label self as less neurotic)
+hist(neuroticism)
 neuro = log(neuroticism)
 
-#THE FINAL THING (kinda)
+#THE FINAL THING
 
-final <- lm(slant~extraversion + agreeable + consc2 + neuro + openness)
+final <- lm(slant~extraversion + agreeable + conscientiousness + neuro + openness)
 summary(final)
 plot(final) #wow that's messy
 abline(lm(slant~extraversion + agreeable + consc2 + neuro + openness))
 
-#next up: figuring out how to make a pretty plot
+#figures + visualizations
 
 library(ggpubr)
 ggscatter(tipidata, x = "extraversion", y = "slant", 
@@ -337,7 +339,7 @@ conscplot <- ggplot(tipidata, aes(x= consc2, y=slant)) + geom_point() +
 print(conscplot + ggtitle("Conscientiousness as a Predictor of Media Slant") +
        labs(y="Media Slant", x="Conscientiousness"))
 
-neuroplot <- ggplot(tipidata, aes(x= neuro, y=slant)) + geom_point() + 
+neuroplot <- ggplot(tipidata, aes(x= neuroticism, y=slant)) + geom_point() + 
   geom_smooth(method="lm", se=TRUE, fullrange=FALSE, level=0.95)
 
 print(neuroplot + ggtitle("Emotional Stability as a Predictor of Media Slant") +
@@ -349,6 +351,4 @@ openplot <- ggplot(tipidata, aes(x= openness, y=slant)) + geom_point() +
 print(openplot + ggtitle("Openness as a Predictor of Media Slant") +
         labs(y="Media Slant", x="Openness"))
 
-#pretty table time
-library(stargazer)
-stargazer(final)
+trait <- c(extraversion, agreeable, consc2, neuroticism, openness)
